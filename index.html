@@ -73,7 +73,7 @@
     }
     
     #meditationBar {
-      width:33%;
+      width:50%;
       height:20px;
       background-color:green;
     }
@@ -112,14 +112,12 @@
     <div id="meditationBarBox">
       <div id="meditationBar"></div>
     </div>
-    <p id="demo">[under construction]</p>
-    <p>
-    meditate for
-    <input type="number" name="meditationMins" id="meditationMins" value="0.01" style="width:2.5em;">
-    minutes
-    <button onclick=meditate()>start</button>
-    </p>
-    <p><button onclick=meditate2()>start2</button></p>
+    <p>meditate for
+    <input type="number" name="meditationMins" id="meditationMins" value="5" style="width:2.5em;">
+    minutes</p>
+	<audio id="bell" src="xylo_phrase.mp3"></audio>
+    <p><button onclick=meditate2()>start</button>
+	<button onclick=ringbell()>sound test</button></p>
     <p>meditation is easy, just set a timer and do nothing until it rings</p>
     <p>good to set aside time in which you have no responsibilities</p>
     </div>
@@ -277,37 +275,6 @@
     document.getElementById("songlist").innerHTML = HTMLsonglist;
     
     // meditation timer
-    let timeleft = 0;
-    let tickerID;
-    
-    // format milliseconds to mins
-    function minuteForm(milliseconds) {
-      
-    }
-    
-    // clock
-    function timerFunction() {
-      timeleft -= 1000;
-      if (timeleft <= 0) {
-        document.getElementById("demo").innerHTML = "timer done. ding ding";
-        clearInterval(tickerID);
-      } else {
-        document.getElementById("demo").innerHTML = timeleft/1000;
-      }
-    }
-    
-    function meditate() {
-      let mins = document.getElementById("meditationMins").value;
-      if (mins < 0) { return; }
-      // set up clock if necessary
-      if (timeleft <= 0) {
-        tickerID = setInterval(timerFunction, 1000);
-      }
-      // read input and set remaining time
-      timeleft = mins*60*1000;
-      document.getElementById("demo").innerHTML = timeleft/1000;
-    }
-    
     let starttime;
     let duration;
     let endtime;
@@ -326,7 +293,6 @@
         clockID = setInterval(barUpdate, 50);
         clock_on = true;
       }
-      
     }
     
     let bar = document.getElementById("meditationBar");
@@ -338,10 +304,16 @@
       bar.style.width = percentComplete + "%";
       if (timeNow >= endtime) {
         clearInterval(clockID);
+		ringbell();
         clock_on = false;
       }
         
     }
+	
+	function ringbell() {
+		document.getElementById("bell").play();
+	}
+	
     
   </script>
   </body>
