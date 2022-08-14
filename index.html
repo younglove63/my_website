@@ -117,7 +117,9 @@
     minutes</p>
 	<audio id="bell" src="meditation.xylo.tones.mp3"></audio>
     <p><button onclick=meditate2()>start</button>
-	<button onclick=ringbell()>sound test</button></p>
+	<button onclick=ringbell()>sound test</button>
+	&#x1F50A <input type="range" min="0" max="1" step="0.01" value="0.5" name="bellVolume" id="bellVolume" style="width:6em;">
+	</p>
     <h4>how to meditate:</h4>
 	<ol>
 	<li>set a timer</li>
@@ -368,7 +370,10 @@
     }
 	
 	function ringbell() {
-		document.getElementById("bell").play();
+		let volume = document.getElementById("bellVolume").value;
+		let bell = document.getElementById("bell");
+		bell.volume = volume;
+		bell.play();
 	}
 	
     
