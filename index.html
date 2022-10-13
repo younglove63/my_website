@@ -122,6 +122,8 @@
 	<li>sit until it rings</li>
 	<li>pat yourself on the back</li>
 	</ol>
+	<button onclick=emomode()>emo mode</button>
+	<button onclick=regularmode()>regular mode</button>
 	</div>
 
     <div class="sidebar box">
@@ -410,7 +412,14 @@
 		bell.play();
 	}
 	
-    
+    function emomode() {
+		document.getElementById("meditationBar").style.backgroundColor = "blue";
+	}
+	  
+	function regularmode() {
+		document.getElementById("meditationBar").style.backgroundColor = "green";
+	}
+
   </script>
   </body>
 </html>
