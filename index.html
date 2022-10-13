@@ -122,8 +122,7 @@
 	<li>sit until it rings</li>
 	<li>pat yourself on the back</li>
 	</ol>
-	<button onclick=emomode()>emo mode</button>
-	<button onclick=regularmode()>regular mode</button>
+	<button onclick=emomodeToggle()>emo mode on/off</button>
 	</div>
 
     <div class="sidebar box">
@@ -410,6 +409,17 @@
 		let bell = document.getElementById("bell");
 		bell.volume = volume;
 		bell.play();
+	}
+	
+	let emomodeOFF = true;
+	function emomodeToggle() {
+		if (emomodeOFF) {
+			emomode()
+			emomodeOFF = false;
+		} else {
+			regularmode()
+			emomodeOFF = true;
+		}
 	}
 	
     function emomode() {
