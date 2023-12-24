@@ -5,85 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>me me me me me</title>
-    <style>
-    body {
-      background-color:#b2baff;
-      background-image: linear-gradient(to bottom, #b2baff 0%, #d9ddff 75%);
-    }
-    
-    #content  {
-      margin: auto;
-      padding: 20px;
-      width: 868px;
-      <!-- border: 1px solid black; -->
-    }
-    
-    .box {
-      background-color:#d9ddff;      
-    }
-    
-    .header {
-      padding: 20px 20px;
-      width:828px;
-      margin-bottom: 20px;
-      overflow: auto;
-    }
-    
-    .journal {
-      padding: 20px 20px;
-      width:512px;
-      margin-right: 20px;
-    }
-    .sidebarcontent {
-      <!-- border: 1px solid black; -->
-      width:296px;
-      float: right;
-      clear: right;
-    }
-    
-    .sidebar {
-      margin-bottom: 20px;
-      padding: 20px 20px;
-      width:256px;
-    }
-    
-    .journal iframe {
-      width: 512px;
-      height: 288px;
-    }
-    
-    .sidebar iframe {
-      width: 256px;
-      height: 144px;
-    }
-    
-    ol {
-      padding-left: 1em;
-    }
-    
-    #meditationBarBox {
-      width:100%;
-      box-sizing:border-box;
-      border:1px solid black;
-      /*background-color:white;*/
-    }
-    
-    #meditationBar {
-      width:50%;
-      height:20px;
-      background-color:green;
-    }
-    
-    
-    
-    </style>
+	<link rel="stylesheet" href="stylesheet.css">
   </head>
     
   <body>
     <div id="content">
     
     <div class="header box">
-    <img src="momin.jpg" style="width:336px;height:157px;float:right;">
+    <img src="images/momin.jpg" style="width:336px;height:157px;float:right;">
     <h1>my (younglove63's) website</h1>
     <p>welcome to my website &#128578;</p>
     <p>this site was inspired by <a href="https://kreayshawn.com/">kreayshawn's website</a></p>
@@ -111,7 +40,7 @@
     <p>meditate for
     <input type="number" name="meditationMins" id="meditationMins" value="5" style="width:2.5em;">
     minutes</p>
-	<audio id="bell" src="meditation.xylo.tones.mp3"></audio>
+	<audio id="bell" src="audio/meditation.xylo.tones.mp3"></audio>
     <p><button onclick=meditate2()>start</button>
 	<button onclick=ringbell()>sound test</button>
 	&#x1F50A <input type="range" min="0" max="1" step="0.01" value="0.5" name="bellVolume" id="bellVolume" style="width:6em;">
@@ -224,7 +153,7 @@
 	<p>I'm going to Bonnaroo soon, huge music festival in Tennessee that I've been to twice before. Last year it was canceled by an act of god (hurricane made the fields too muddy) and the year before it was canceled for COVID, so I think this is gonna be a crazy year as everyone finally gets to show up. (Fingers crossed we do get to show up this time.)<p>
 	<p>I did acid again since the last post. This time the thing I came away with was an image of myself as this formless intelligent slime. Of course I struggle to stay organized; I'm a slime! This was strangely comforting. Was also filled with appreciation for plants. Identified with the wisteria, a viney kind of plant that has no strong structure of its own but wraps around other trees and fences and stuff to get higher and catch some sunlight. All of this is part of me processing the idea of having ADHD. A thorny plant poked me as I was walking and I got mad at it, but then I looked and there was some wisteria twirled around it, and I couldn't stay mad.<p>
 	<p>Oh, and the reason I've been outside so much is that Momo goes outside now! He loves it out there. At first I would take him out in a harness, but now I feel safe letting him roam on his own. He has a territory around the yard and stays clear of the road. Yesterday he had a staredown with a wild turkey, which must have looked like a dinosaur to him (he won the staredown). Afterwards he was all puffed up, fat tail, bristled back, looked very fierce, but he calmed down and shrunk when I pet him. Nice cat.</p>
-	<img src="momo_in_grass.JPG" style="width:512px;">
+	<img src="images/momo_in_grass.JPG" style="width:512px;">
 	</div>	
 	
 	<div class="entry">
@@ -269,7 +198,7 @@
 - button to show / hide song list?
 - some sort of subtle / wavy gradient or pattern in the background
 -->
-
+<script type="text/javascript" src="scripts/meditation_timer.js"></script>
   <script>
     let songlist;
     let songnumber;
@@ -408,69 +337,6 @@
     }
     HTMLsonglist += "</ol>";
     document.getElementById("songlist").innerHTML = HTMLsonglist;
-    
-    // meditation timer
-    let starttime;
-    let duration;
-    let endtime;
-    let clock_on = false;
-    let clockID;
-    function meditate2() {
-      let mins = document.getElementById("meditationMins").value;
-      if (mins < 0) { return; } // no funny business
-      starttime = Date.now();
-      duration = mins*60*1000;
-      endtime = starttime + duration;
-      bar.style.width = 0;
-      
-      // set up clock if necessary
-      if (clock_on == false) {
-        clockID = setInterval(barUpdate, 50);
-        clock_on = true;
-      }
-    }
-    
-    let bar = document.getElementById("meditationBar");
-    function barUpdate() {
-      timeNow = Date.now();
-      timeElapsed = timeNow - starttime;
-      percentComplete = timeElapsed/duration*100;
-      (percentComplete > 100) ? percentComplete = 100 : "we're chillin";
-      bar.style.width = percentComplete + "%";
-      if (timeNow >= endtime) {
-        clearInterval(clockID);
-		ringbell();
-        clock_on = false;
-      }
-        
-    }
-	
-	function ringbell() {
-		let volume = document.getElementById("bellVolume").value;
-		let bell = document.getElementById("bell");
-		bell.volume = volume;
-		bell.play();
-	}
-	
-	let emomodeOFF = true;
-	function emomodeToggle() {
-		if (emomodeOFF) {
-			emomode()
-			emomodeOFF = false;
-		} else {
-			regularmode()
-			emomodeOFF = true;
-		}
-	}
-	
-    function emomode() {
-		document.getElementById("meditationBar").style.backgroundColor = "blue";
-	}
-	  
-	function regularmode() {
-		document.getElementById("meditationBar").style.backgroundColor = "green";
-	}
-
   </script>
   </body>
 </html>

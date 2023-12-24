@@ -1,0 +1,67 @@
+body {
+  background-color:#b2baff;
+  background-image: linear-gradient(to bottom, #b2baff 0%, #d9ddff 75%);
+}
+
+#content  {
+  margin: auto;
+  padding: 20px;
+  width: 868px;
+  <!-- border: 1px solid black; -->
+}
+
+.box {
+  background-color:#d9ddff;      
+}
+
+.header {
+  padding: 20px 20px;
+  width:828px;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.journal {
+  padding: 20px 20px;
+  width:512px;
+  margin-right: 20px;
+}
+.sidebarcontent {
+  <!-- border: 1px solid black; -->
+  width:296px;
+  float: right;
+  clear: right;
+}
+
+.sidebar {
+  margin-bottom: 20px;
+  padding: 20px 20px;
+  width:256px;
+}
+
+.journal iframe {
+  width: 512px;
+  height: 288px;
+}
+
+.sidebar iframe {
+  width: 256px;
+  height: 144px;
+}
+
+ol {
+  padding-left: 1em;
+}
+
+#meditationBarBox {
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid black;
+  /*background-color:white;*/
+}
+
+#meditationBar {
+  width:50%;
+  height:20px;
+  background-color:green;
+}
