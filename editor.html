@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<!-- reading my source code bro? 👀-->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>secret illegal editor</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="ckeditor/ckeditor.js"></script>
+  </head>
+    
+  <body>
+    <div id="content">
+	
+	<div class="header box">
+    <img src="images/momin.jpg" style="width:336px;height:157px;float:right;">
+    <h1>secret illegal editor page</h1>
+    <p>this editor does not save anywhere</p>
+	<p>press Source to see the HTML, then copy and paste wherever</p>
+    </div>
+	
+
+    <div class="box">
+	<h3 id="datetime"></h3>
+	<form>
+		<textarea name="editor1" id="editor1" rows="10" cols="80">
+		</textarea>
+		<script>
+			CKEDITOR.replace( 'editor1', {
+				uiColor: '#b2baff',
+				height: 500
+			});
+		</script>
+		<script>
+		  // Get current date and time
+		  var now = new Date();
+		  var datetime = now.toLocaleDateString("en-US");
+
+		  // Insert date and time into HTML
+		  document.getElementById("datetime").innerHTML = datetime;
+		</script>
+	</form>
+    </div>
+	
+	</div>
+  </body>
+</html>
+
+

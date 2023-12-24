@@ -1,6 +1,6 @@
 body {
   background-color:#b2baff;
-  background-image: linear-gradient(to bottom, #b2baff 0%, #d9ddff 75%);
+  /* background-image: linear-gradient(to bottom, #b2baff 0%, #d9ddff 75%); */
 }
 
 #content  {
@@ -11,18 +11,17 @@ body {
 }
 
 .box {
-  background-color:#d9ddff;      
+  background-color:#d9ddff;
+  padding: 20px 20px;
 }
 
 .header {
-  padding: 20px 20px;
   width:828px;
   margin-bottom: 20px;
   overflow: auto;
 }
 
 .journal {
-  padding: 20px 20px;
   width:512px;
   margin-right: 20px;
 }
@@ -35,7 +34,6 @@ body {
 
 .sidebar {
   margin-bottom: 20px;
-  padding: 20px 20px;
   width:256px;
 }
 
