@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>me me me me me</title>
+	<link rel="stylesheet" href="stylesheet.css">
+  </head>
+    
+  <body>
+    <div id="content">
+    
+    <div class="header box">
+    <a href="index.html"><img src="images/momin.jpg" style="width:336px;height:157px;float:right;"></a>
+    <h1>my (younglove63's) website</h1>
+    <p>welcome to my website &#128578;</p>
+    <p>this site was inspired by <a href="https://kreayshawn.com/">kreayshawn's website</a></p>
+    </div>
+    
+    <div class="sidebarcontent">
+
+    <div class="sidebar box">
+    <h2>meditation timer</h2>
+    <div id="meditationBarBox">
+      <div id="meditationBar"></div>
+    </div>
+    <p>meditate for
+    <input type="number" name="meditationMins" id="meditationMins" value="5" style="width:2.5em;">
+    minutes</p>
+	<audio id="bell" src="audio/meditation.xylo.tones.mp3"></audio>
+    <p><button onclick=meditate2()>start</button>
+	<button onclick=ringbell()>sound test</button>
+	&#x1F50A <input type="range" min="0" max="1" step="0.01" value="0.5" name="bellVolume" id="bellVolume" style="width:6em;">
+	</p>
+    <h4>how to meditate:</h4>
+	<ol>
+	<li>set a timer</li>
+	<li>sit until it rings</li>
+	<li>pat yourself on the back</li>
+	</ol>
+	<button onclick=emomodeToggle()>emo mode on/off</button>
+	</div>
+	
+    </div> <!-- sidebarcontent -->
+    </div> <!-- content -->
+
+<script type="text/javascript" src="scripts/meditation_timer.js"></script>
+  </body>
+</html>
+
