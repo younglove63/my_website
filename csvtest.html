@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+
+	<div class="sidebar box">
+    <h2>listen to this!</h2>
+    <iframe id="randomsong" width="560" height="315" src="error" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+    <p id="songtitle">song title goes here</p>
+    <button onclick="embedRandomSong()">pick new song</button>
+    <button onclick='getValues("1TcLyszmavTr5-96JjbbEQyclMzKgmKPubVtXSG0wBCg", "A2", 0)'>pull from sheets</button>
+    </div>
+
+</body>
+</html>
+
+<script src="https://apis.google.com/js/api.js"></script>
+
+<script>
+
+function getValues(spreadsheetId, range, callback) {
+  try {
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: spreadsheetId,
+      range: range,
+    }).then((response) => {
+      const result = response.result;
+      const numRows = result.values ? result.values.length : 0;
+      console.log(`${numRows} rows retrieved.`);
+      if (callback) callback(response);
+    });
+  } catch (err) {
+   console.log(err.message);
+    return;
+  }
+}
+
+
+
+    function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+    }
+    function embedRandomSong() {
+      songnumber = getRndInteger(0,songlist.length);
+      songtitle = songlist[songnumber][0];
+      songHash = songlist[songnumber][1];
+      document.getElementById("songtitle").innerHTML = songtitle;
+      document.getElementById("randomsong").src = `https://www.youtube.com/embed/${songHash}`;
+    }
+    embedRandomSong();
+
+</script>
